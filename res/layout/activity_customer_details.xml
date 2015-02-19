@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:hint="enter Name"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    
+    <EditText
+        android:id="@+id/email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:padding="10dp"
+        android:hint="enter Email"
+        android:inputType="textEmailAddress" />
+
+    
+    <EditText
+        android:id="@+id/mobileno_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/email_field"
+        android:ems="10"
+        android:padding="10dp"
+        android:hint="enter mobileNo"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/acno_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="card No/Account No"
+        android:padding="10dp"
+        android:layout_below="@+id/mobileno_field"
+        android:layout_marginTop="20dp"
+        android:ems="10" />
+
+</RelativeLayout>

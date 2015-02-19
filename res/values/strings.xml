@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">customerApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_customer_details">CustomerDetails</string>
+    <string name="title_activity_atm_issue">AtmIssue</string>
+
+</resources>
