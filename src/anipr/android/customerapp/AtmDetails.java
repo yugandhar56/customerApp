@@ -29,7 +29,8 @@ public class AtmDetails extends ActionBarActivity{
 			
 			@Override
 			public void onClick(View v) {
-				
+				Intent in=new Intent(AtmDetails.this,AtmIssue.class);
+				startActivity(in);
 			}
 		});
 	}

@@ -112,7 +112,6 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
     	JSONArray atmData;
 
 		public customerAdapter(JSONArray atmData) {
-			// TODO Auto-generated constructor stub
 			
 			this.atmData=atmData;
 		}
@@ -127,7 +126,6 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
 			try {
 				return atmData.getJSONObject(position);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return null;
 			}
@@ -151,13 +149,12 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
 				customer=(TextView) convertView.findViewById(R.id.customer);
 				try {
 					String atmDetails[]=atmData.getJSONObject(position).getJSONArray("atm").getString(1).split("%%");
-					String atmname=atmDetails[0];
-					atmName.setText(atmname);
+					//String atmname=atmDetails[0];
+					atmName.setText(atmDetails[0]);
 					address.setText(atmData.getJSONObject(position).getJSONArray("country").getString(1));
 					name.setText(atmData.getJSONObject(position).getString("name"));
 					customer.setText(atmData.getJSONObject(position).getJSONArray("customer").getString(1));
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}

@@ -16,14 +16,10 @@ public class AsyncTaskCallback extends AsyncTask<Void, Integer, String> {
 		this.context = context;
 		this.mAsyncTaskCallbackInterface = mAsyncTaskCallbackInterface;
 	}
-
-	
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		
 	}
-
 	@Override
 	protected String doInBackground(Void... params) {
 		try {
