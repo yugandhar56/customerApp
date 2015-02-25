@@ -9,6 +9,7 @@ import android.util.Log;
 public class AsyncTaskCallback extends AsyncTask<Void, Integer, String> {
 	public AsyncTaskCallbackInterface mAsyncTaskCallbackInterface;
 	private String tag = getClass().getSimpleName();
+	@SuppressWarnings("unused")
 	private Context context;
 	
 	public AsyncTaskCallback(Context context,

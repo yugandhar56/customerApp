@@ -6,63 +6,46 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="ATM Details"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/atm_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/atm_id"
+        android:layout_below="@+id/atm_id"
         android:layout_marginTop="20dp"
-        android:text="Medium Text"
+        android:text="ATM NAME"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/atm_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        
         android:layout_marginTop="20dp"
-        android:text="Medium Text"
+        android:text="ATM _ID"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/atm_name"
+        android:layout_below="@+id/atm_name"
         android:layout_marginTop="20dp"
-        android:text="Medium Text"
+        android:text="Address"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="19dp"
-        android:text="Medium Text"
+        android:layout_alignRight="@+id/atm_name"
+        android:layout_below="@+id/address"
+        android:layout_marginTop="20dp"
+       
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/user_issue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_below="@+id/textView5"
-        android:layout_marginTop="50dp"
-        android:text="User Issue" />
 
     <Button
         android:id="@+id/atm_issue"
@@ -73,5 +56,13 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:text="ATM Issue" />
+
+    <Button
+        android:id="@+id/user_issue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address"
+        android:layout_centerVertical="true"
+        android:text="User Issue" />
 
 </RelativeLayout>

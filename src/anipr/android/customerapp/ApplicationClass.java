@@ -29,7 +29,7 @@ public class ApplicationClass extends Application {
 	}
 	public OpenERP getOpenERPCon() throws ClientProtocolException, JSONException, IOException, OEVersionException {
 		if (mOpenERP == null) {
-			mOpenERP = new OpenERP("http://128.199.199.27:8069");
+			mOpenERP = new OpenERP("http://192.168.1.29:8069");
 		}
 
 		return mOpenERP;

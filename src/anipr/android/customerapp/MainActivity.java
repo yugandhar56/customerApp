@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -33,11 +34,14 @@ public class MainActivity extends ActionBarActivity {
 	ListView customerList;
 	private OpenERP mOpenERP;
 	TextView atmName,address,name,customer;
+	public static String id;
+	JSONObject atmpayload;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         customerList=(ListView) findViewById(R.id.customer_list);
+        atmpayload=new JSONObject();
 		new AsyncTaskCallback(MainActivity.this, new AsyncTaskCallbackInterface() {
 
 			@Override
@@ -45,25 +49,23 @@ public class MainActivity extends ActionBarActivity {
 				try {
 
 					// Connecting to openERP
-
 					OEDomain domain = new OEDomain();
+					//domain.add("uid", "=", 1);
 					
-					//domain.add("status", "=", "done");
-					OEFieldsHelper fields = new OEFieldsHelper(new String[] {
-							"name", "customer", "atm", "country", "task_month",
-							"visit_time" });
 					mOpenERP = ApplicationClass.getInstance().getOpenERPCon();
-					JSONObject response = mOpenERP.authenticate(
-							"s", "s", "TransTechERP");
+				JSONObject response = mOpenERP.authenticate(
+						"admin", "admin", "acs");
 					String loginres = response.toString();
 
 					Log.d("Got Login Response ", loginres);
+					//mOpenERP.search
 					
+					OEFieldsHelper fields = new OEFieldsHelper(new String[] {
+							"atm_id", "atm_name", "atm_add","id" });
+					Log.d("fields",""+fields.get());
 					JSONObject serachResposne = mOpenERP.search_read(
-							"atm.surverys.management", fields.get(),
-							domain.get());
-
-					Log.d("atmdetails", serachResposne.getJSONArray("records")
+							"atm.cus", fields.get(),domain.get());
+					Log.d("atmdetails", ""+serachResposne
 							.toString());
 					return serachResposne.getJSONArray("records").toString();
 				} catch (ClientProtocolException e) {
@@ -94,6 +96,8 @@ public class MainActivity extends ActionBarActivity {
 				}
 			}
 		}).execute();
+		
+		
 customerList.setOnItemClickListener(new OnItemClickListener() {
 
 	@Override
@@ -106,6 +110,11 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
 	}
 });
 	}    
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
     class customerAdapter extends BaseAdapter
     {
     	
@@ -137,7 +146,7 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
 			return position;
 		}
 
-		@Override
+		@SuppressLint("InflateParams") @Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if(convertView==null)
 			{
@@ -148,12 +157,11 @@ customerList.setOnItemClickListener(new OnItemClickListener() {
 				name=(TextView) convertView.findViewById(R.id.task_id);
 				customer=(TextView) convertView.findViewById(R.id.customer);
 				try {
-					String atmDetails[]=atmData.getJSONObject(position).getJSONArray("atm").getString(1).split("%%");
-					//String atmname=atmDetails[0];
-					atmName.setText(atmDetails[0]);
-					address.setText(atmData.getJSONObject(position).getJSONArray("country").getString(1));
-					name.setText(atmData.getJSONObject(position).getString("name"));
-					customer.setText(atmData.getJSONObject(position).getJSONArray("customer").getString(1));
+					
+					atmName.setText(atmData.getJSONObject(position).getString("atm_name"));
+					address.setText(atmData.getJSONObject(position).getString("atm_add"));
+					name.setText(atmData.getJSONObject(position).getString("atm_id"));
+					id=atmData.getJSONObject(position).getString("id");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
